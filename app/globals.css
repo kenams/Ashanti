@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fffafb;
+  --foreground: #241f23;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(233, 200, 208, 0.14), transparent 30%),
+    linear-gradient(180deg, #fffafb 0%, #ffffff 55%, #fcf6f8 100%);
+  color: var(--foreground);
+}
+
+* {
+  border-color: rgba(36, 31, 35, 0.08);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-[0.01em] text-ink;
+  }
+
+  p {
+    @apply leading-7 text-ink/75;
+  }
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-space {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .glass-panel {
+    @apply rounded-[30px] border border-white/70 bg-white/80 shadow-soft backdrop-blur;
+  }
+
+  .section-kicker {
+    @apply mb-4 inline-flex rounded-full border border-rose/60 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-ink/70;
+  }
+}
