@@ -54,10 +54,10 @@ function BookingPanel() {
   return (
     <div className="soft-panel p-8 sm:p-10">
       <p className="section-kicker">Reservation integree</p>
-      <h3 className="mt-5 text-3xl sm:text-4xl">Planity peut etre integre directement ici.</h3>
+      <h3 className="mt-5 text-3xl sm:text-4xl">Planity peut etre integre directement dans cette section.</h3>
       <p className="mt-4 max-w-2xl text-base sm:text-lg">
-        La structure est prete pour afficher l'agenda Planity dans le site. Il suffira de remplacer
-        l'URL d'integration dans <code className="rounded bg-black/[0.05] px-2 py-1 text-sm">lib/site.ts</code>.
+        La structure est deja prete pour afficher l'agenda Planity sur le site.
+        Il suffira de remplacer l'URL d'integration dans <code className="rounded bg-black/[0.05] px-2 py-1 text-sm">lib/site.ts</code>.
       </p>
       <div className="mt-8 rounded-[28px] border border-dashed border-black/[0.12] bg-[#fbf5f2] p-8">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -66,9 +66,7 @@ function BookingPanel() {
               A brancher
             </p>
             <p className="mt-3 text-sm">
-              <code className="rounded bg-white px-2 py-1 text-[13px]">
-                planityEmbedUrl
-              </code>
+              <code className="rounded bg-white px-2 py-1 text-[13px]">planityEmbedUrl</code>
             </p>
           </div>
           <div>
@@ -113,12 +111,11 @@ export default function HomePage() {
             <Reveal className="pt-4 sm:pt-8">
               <span className="section-kicker">Institut de beaute a Balma</span>
               <h1 className="mt-6 max-w-3xl text-5xl leading-[0.94] sm:text-6xl xl:text-7xl">
-                Une experience plus douce, plus fluide, plus elegante.
+                Une parenthese beaute pensee avec douceur, precision et elegance.
               </h1>
               <p className="mt-6 max-w-xl text-base sm:text-lg">
-                Ashanti Beauty imagine la beaute comme un moment de calme, de precision et de raffinement.
-                Un lieu pense pour les soins, le bien-etre et la mise en valeur, avec une attention particuliere
-                a l'experience mobile et a la prise de rendez-vous.
+                Ashanti Beauty vous accueille a Balma dans un univers feminin, epure et premium,
+                ou chaque rendez-vous est pense pour allier bien-etre, qualite du geste et sensation de confort.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -144,7 +141,7 @@ export default function HomePage() {
                   <p className="mt-2 font-display text-4xl leading-none">-20%</p>
                 </div>
                 <p className="max-w-[210px] text-sm">
-                  Profitez de l'offre de bienvenue lors de votre premiere visite.
+                  Profitez de notre offre de bienvenue lors de votre premiere visite.
                 </p>
               </div>
 
@@ -188,7 +185,7 @@ export default function HomePage() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/[0.05]" />
                 <div className="absolute left-6 top-6 rounded-full bg-white/[0.88] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.60] backdrop-blur">
-                  Demo hero premium
+                  Direction artistique demo
                 </div>
                 <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
                   <div className="rounded-[26px] bg-white/[0.88] px-5 py-4 shadow-card backdrop-blur">
@@ -205,7 +202,7 @@ export default function HomePage() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-ink/[0.52]">
-                Hero de demonstration anime. Remplacez-le ensuite par la vraie video dans <code className="rounded bg-black/[0.05] px-2 py-1">lib/site.ts</code>.
+                Hero de demonstration anime, prevu pour etre remplace par votre video finale.
               </p>
             </Reveal>
           </div>
@@ -249,7 +246,7 @@ export default function HomePage() {
             <Reveal className="max-w-3xl">
               <span className="section-kicker">Prestations</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">
-                Des soins choisis pour leur douceur, leur precision et leur rendu impeccable.
+                Des prestations expertes pour sublimer le regard, les ongles, la peau et le bien-etre.
               </h2>
             </Reveal>
 
@@ -289,11 +286,10 @@ export default function HomePage() {
                 <div className="flex flex-col justify-center p-8 sm:p-10">
                   <span className="section-kicker">Univers Ashanti</span>
                   <h3 className="mt-5 text-3xl sm:text-4xl">
-                    Un environnement doux et soyeux, pense pour le confort et l'image haut de gamme.
+                    Un cadre doux, contemporain et raffine, imagine pour une experience haut de gamme.
                   </h3>
                   <p className="mt-5 max-w-xl text-base">
-                    Ces visuels donnent tout de suite la bonne sensation pour la demo cliente :
-                    un institut feminin, propre, premium et tres contemporain.
+                    Tout est pense pour installer une sensation immediate de calme, de soin et d'elegance.
                   </p>
                 </div>
               </div>
@@ -316,12 +312,12 @@ export default function HomePage() {
             <Reveal delay={120}>
               <span className="section-kicker">L'institut</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">
-                Un lieu pense pour ralentir, se retrouver et se sentir parfaitement bien.
+                Un lieu pense pour ralentir, se recentrer et se sentir pleinement bien.
               </h2>
               <p className="mt-6 max-w-2xl text-base sm:text-lg">
-                Ashanti Beauty accueille chaque cliente dans un cadre epure, feminin et rassurant.
-                Ici, l'experience est volontairement fluide : peu de surcharge visuelle, beaucoup d'espace,
-                un accueil attentif et des soins executes avec exigence.
+                Ashanti Beauty accueille chaque cliente dans une atmosphere epuree, rassurante et feminine.
+                L'experience y est volontairement fluide : un accueil attentif, des soins realises avec exigence
+                et un environnement qui laisse toute sa place au bien-etre.
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[28px] border border-black/[0.06] bg-white/75 p-6">
@@ -329,7 +325,7 @@ export default function HomePage() {
                     Notre approche
                   </p>
                   <p className="mt-3 text-sm">
-                    Une beaute soignee, elegante, contemporaine et jamais surchargee.
+                    Une beaute soignee, elegante et contemporaine, toujours guidee par le sens du detail.
                   </p>
                 </div>
                 <div className="rounded-[28px] border border-black/[0.06] bg-white/75 p-6">
@@ -337,7 +333,7 @@ export default function HomePage() {
                     Notre promesse
                   </p>
                   <p className="mt-3 text-sm">
-                    Un rendez-vous fluide, un resultat net et une sensation premium du debut a la fin.
+                    Une experience fluide, un resultat impeccable et une sensation premium du debut a la fin.
                   </p>
                 </div>
               </div>
@@ -350,7 +346,7 @@ export default function HomePage() {
             <Reveal className="max-w-2xl">
               <span className="section-kicker">Avis clientes</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">
-                Une adresse que l'on recommande pour la qualite du soin et la sensation d'ensemble.
+                Une adresse que l'on recommande pour la qualite du soin, l'accueil et l'atmosphere.
               </h2>
             </Reveal>
 
@@ -378,11 +374,11 @@ export default function HomePage() {
             <Reveal>
               <span className="section-kicker">Reservation</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">
-                Une prise de rendez-vous simple, rapide et directement integree au site.
+                Une prise de rendez-vous simple, rapide et naturellement integree au parcours.
               </h2>
               <p className="mt-6 max-w-xl text-base sm:text-lg">
-                La cliente a demande une integration Planity directe. Cette section est preparee pour afficher
-                l'agenda sans sortir du site, avec un rendu propre sur mobile et desktop.
+                Cette section est preparee pour accueillir une integration Planity directe, avec un affichage fluide
+                sur mobile comme sur desktop.
               </p>
               <div className="mt-8 space-y-4">
                 <div className="rounded-[28px] border border-black/[0.06] bg-white px-6 py-5">
@@ -390,7 +386,7 @@ export default function HomePage() {
                     Parcours attendu
                   </p>
                   <p className="mt-3 text-sm">
-                    Hero video, scrolling fluide, puis reservation sans friction dans le site.
+                    Une decouverte inspiree, puis une reservation simple et immediate sans quitter le site.
                   </p>
                 </div>
                 <div className="rounded-[28px] border border-black/[0.06] bg-white px-6 py-5">
@@ -398,7 +394,7 @@ export default function HomePage() {
                     Action restante
                   </p>
                   <p className="mt-3 text-sm">
-                    Ajouter le vrai lien ou embed Planity fourni par la cliente.
+                    Integrer le vrai lien ou module Planity des reception de vos acces.
                   </p>
                 </div>
               </div>
@@ -415,7 +411,7 @@ export default function HomePage() {
             <Reveal className="max-w-3xl">
               <span className="section-kicker">Contact</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">
-                Toutes les informations utiles pour venir, appeler ou ecrire rapidement.
+                Toutes les informations utiles pour venir a l'institut, appeler ou prendre contact rapidement.
               </h2>
             </Reveal>
 
@@ -473,7 +469,7 @@ export default function HomePage() {
                     </p>
                     <p className="mt-2 font-semibold text-ink">{siteConfig.instagramHandle}</p>
                     <p className="mt-1 text-sm text-ink/[0.62]">
-                      Profil public recupere pour la demo visuelle.
+                      Retrouvez l'univers Ashanti Beauty sur Instagram.
                     </p>
                   </div>
                 </a>
@@ -512,7 +508,7 @@ export default function HomePage() {
                   <div className="flex min-w-[220px] flex-1 items-center gap-3">
                     <Star className="h-5 w-5 text-gold" />
                     <p className="text-sm">
-                      Premiere visite ? Pensez a mentionner l'offre de bienvenue a <span className="font-semibold text-ink">-20%</span>.
+                      Premiere visite ? Profitez de l'offre de bienvenue a <span className="font-semibold text-ink">-20%</span>.
                     </p>
                   </div>
                   <a

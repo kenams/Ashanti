@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div>
           <p className="font-display text-4xl leading-none">Ashanti Beauty</p>
           <p className="mt-4 max-w-md text-sm">
-            Un institut de beaute a Balma pense comme une parenthese douce, elegante et parfaitement maitrisee.
+            Un institut de beaute a Balma imagine comme une parenthese douce, elegante et parfaitement maitrisee.
           </p>
         </div>
 
