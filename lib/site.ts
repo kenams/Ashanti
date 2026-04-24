@@ -1,16 +1,23 @@
 export const siteConfig = {
   name: "Ashanti Beauty",
-  title: "Ashanti Beauty | Institut de beauté premium à Balma",
+  title: "Ashanti Beauty | Institut de beaute premium a Balma",
   description:
-    "Ashanti Beauty, institut de beauté à Balma, propose soins beauté, ongles, soin visage, massage, épilation et beauté du regard dans un univers chic, doux et raffiné.",
+    "Ashanti Beauty, institut de beaute a Balma, propose soins beaute, ongles, soin visage, massage, epilation et beaute du regard dans un univers minimaliste, raffine et premium.",
   phoneDisplay: "07 67 11 35 48",
   phoneHref: "tel:+33767113548",
   email: "contact@ashanti-beauty.fr",
-  instagramHref: "https://instagram.com/",
-  address: "5 Esplanade André Michaux, 31130 Balma",
+  instagramHref: "https://www.instagram.com/ashantibeauty.fr/",
+  instagramHandle: "@ashantibeauty.fr",
+  address: "5 Esplanade Andre Michaux, 31130 Balma",
   mapsEmbed:
-    "https://www.google.com/maps?q=5%20Esplanade%20Andr%C3%A9%20Michaux%2C%2031130%20Balma&z=15&output=embed",
-  bookingHref: "#contact",
+    "https://www.google.com/maps?q=5%20Esplanade%20Andre%20Michaux%2C%2031130%20Balma&z=15&output=embed",
+  mapsHref:
+    "https://maps.google.com/?q=5%20Esplanade%20Andre%20Michaux%2C%2031130%20Balma",
+  bookingHref: "#reservation",
+  planityUrl: "",
+  planityEmbedUrl: "",
+  videoSrc: "",
+  videoPoster: "/hero-beauty-portrait.png",
   hours: [
     { day: "Mardi", value: "12h - 18h" },
     { day: "Mercredi - Samedi", value: "10h - 19h" },
@@ -20,29 +27,29 @@ export const siteConfig = {
 
 export const services = [
   {
-    title: "Onglerie",
+    title: "Brows",
     description:
-      "Manucures soignées, poses raffinées et finitions impeccables pour des mains élégantes au quotidien."
+      "Brow lift, restructuration, coloration au henne, ombre shading et light brows pour redessiner le regard avec finesse."
   },
   {
-    title: "Soin visage",
+    title: "Lashes",
     description:
-      "Rituels ciblés pour raviver l’éclat, hydrater en profondeur et sublimer la peau en douceur."
+      "Du cil a cil au mega volume russe, avec rehaussement de cils pour ouvrir le regard et creer un resultat sur mesure."
   },
   {
-    title: "Massage & bien-être",
+    title: "Nails",
     description:
-      "Parenthèses relaxantes pensées pour délier les tensions et offrir un vrai moment de lâcher-prise."
+      "Manucure russe, pose gel, pose americaine, vernis semi-permanent et nail art dans une execution propre et elegante."
   },
   {
-    title: "Beauté du regard",
+    title: "Skin & Body",
     description:
-      "Cils et sourcils redessinés avec précision pour un regard intensifié, harmonieux et naturel."
+      "Soins visage, soins corps, drainage lymphatique, shiatsu, pedicure et epilation pour une prise en charge complete."
   },
   {
-    title: "Épilation",
+    title: "Massages",
     description:
-      "Prestations nettes et confortables, réalisées avec exigence pour une peau douce et impeccable."
+      "Californien, balinais, pierres chaudes, deep tissue ou prenatal pour relacher les tensions et retrouver l'equilibre."
   }
 ];
 
@@ -50,23 +57,23 @@ export const reviews = [
   {
     name: "Camille R.",
     quote:
-      "Une adresse que je recommande les yeux fermés. L’accueil est délicat, le lieu est superbe et le résultat était parfait."
+      "Un lieu tres elegant, avec un accueil delicat et une vraie sensation de qualite des l'arrivee."
   },
   {
     name: "Sarah M.",
     quote:
-      "Très belle découverte à Balma. Le soin visage était relaxant et ma peau est restée lumineuse plusieurs jours."
+      "Le soin visage etait parfait. Le lieu est beau, calme et le resultat etait visible tout de suite."
   },
   {
-    name: "Inès D.",
+    name: "Ines D.",
     quote:
-      "L’institut est chic sans être froid. On se sent écoutée, conseillée et vraiment mise en valeur."
+      "On se sent prise en charge avec douceur. Tout est propre, raffine et tres bien pense."
   },
   {
     name: "Julie T.",
     quote:
-      "Mention spéciale pour la qualité des finitions en onglerie et la douceur de l’accueil. Expérience premium."
+      "J'ai adore l'ambiance et le soin apporte aux details. Une vraie adresse premium a Balma."
   }
 ];
 
-export const strengths = ["Qualité", "Hygiène", "Accueil personnalisé"];
+export const strengths = ["Qualite", "Hygiene", "Accueil personnalise"];

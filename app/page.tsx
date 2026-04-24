@@ -7,14 +7,12 @@ import {
   Mail,
   MapPin,
   Phone,
-  ShieldCheck,
-  Sparkles,
+  Play,
+  Quote,
   Star
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
-import { ReviewCard } from "@/components/review-card";
-import { SectionHeading } from "@/components/section-heading";
-import { ServiceCard } from "@/components/service-card";
+import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyMobileCTA } from "@/components/sticky-mobile-cta";
@@ -24,20 +22,80 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
   name: siteConfig.name,
-  image: "https://ashanti-beauty.fr/hero-placeholder.svg",
+  image: "https://ashanti-beauty.fr/hero-video-poster.svg",
   telephone: siteConfig.phoneDisplay,
   email: siteConfig.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "5 Esplanade André Michaux",
+    streetAddress: "5 Esplanade Andre Michaux",
     postalCode: "31130",
     addressLocality: "Balma",
     addressCountry: "FR"
   },
   openingHours: ["Tu 12:00-18:00", "We-Sa 10:00-19:00", "Su 10:00-18:00"],
-  priceRange: "€€",
+  priceRange: "EUR",
   url: "https://ashanti-beauty.fr"
 };
+
+function BookingPanel() {
+  if (siteConfig.planityEmbedUrl) {
+    return (
+      <div className="overflow-hidden rounded-[34px] border border-black/[0.06] bg-white shadow-soft">
+        <iframe
+          title="Reservation Planity - Ashanti Beauty"
+          src={siteConfig.planityEmbedUrl}
+          className="h-[720px] w-full"
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="soft-panel p-8 sm:p-10">
+      <p className="section-kicker">Reservation integree</p>
+      <h3 className="mt-5 text-3xl sm:text-4xl">Planity peut etre integre directement ici.</h3>
+      <p className="mt-4 max-w-2xl text-base sm:text-lg">
+        La structure est prete pour afficher l'agenda Planity dans le site. Il suffira de remplacer
+        l'URL d'integration dans <code className="rounded bg-black/[0.05] px-2 py-1 text-sm">lib/site.ts</code>.
+      </p>
+      <div className="mt-8 rounded-[28px] border border-dashed border-black/[0.12] bg-[#fbf5f2] p-8">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+              A brancher
+            </p>
+            <p className="mt-3 text-sm">
+              <code className="rounded bg-white px-2 py-1 text-[13px]">
+                planityEmbedUrl
+              </code>
+            </p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+              CTA deja prevu
+            </p>
+            <p className="mt-3 text-sm">Boutons Reserver visibles sur mobile et desktop.</p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a
+          href={siteConfig.planityUrl || "#contact"}
+          className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white"
+        >
+          Reserver maintenant <CalendarDays className="h-4 w-4" />
+        </a>
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3.5 text-sm font-semibold text-ink"
+        >
+          Nous contacter <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -50,101 +108,130 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="accueil">
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-hero-glow" />
-          <div className="container-shell relative section-space grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
-            <div className="animate-fade-up">
-              <span className="section-kicker">Institut de beauté à Balma</span>
-              <h1 className="max-w-3xl text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
-                L’adresse beauté chic, douce et raffinée pour prendre soin de vous.
+        <section className="container-shell section-space pb-10">
+          <div className="grid items-start gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:gap-14">
+            <Reveal className="pt-4 sm:pt-8">
+              <span className="section-kicker">Institut de beaute a Balma</span>
+              <h1 className="mt-6 max-w-3xl text-5xl leading-[0.94] sm:text-6xl xl:text-7xl">
+                Une experience plus douce, plus fluide, plus elegante.
               </h1>
-              <p className="mt-6 max-w-2xl text-base sm:text-lg">
-                Ashanti Beauty vous accueille à Balma dans un univers premium pensé pour les soins beauté,
-                l’onglerie, le soin visage, le massage et la mise en valeur du regard.
+              <p className="mt-6 max-w-xl text-base sm:text-lg">
+                Ashanti Beauty imagine la beaute comme un moment de calme, de precision et de raffinement.
+                Un lieu pense pour les soins, le bien-etre et la mise en valeur, avec une attention particuliere
+                a l'experience mobile et a la prise de rendez-vous.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={siteConfig.bookingHref}
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-ink/90"
+                  className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white"
                 >
-                  Réserver maintenant <CalendarDays className="h-4 w-4" />
+                  Reserver maintenant <CalendarDays className="h-4 w-4" />
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/20"
+                  className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3.5 text-sm font-semibold text-ink"
                 >
                   Nous contacter <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
 
-              <div className="mt-8 inline-flex max-w-xl flex-col rounded-[28px] border border-rose/60 bg-white/85 p-5 shadow-card sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+              <div className="mt-8 flex max-w-md items-center justify-between rounded-[28px] border border-black/[0.06] bg-white/90 px-5 py-5 shadow-soft">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink/55">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-ink/[0.45]">
                     Offre de bienvenue
                   </p>
-                  <p className="mt-2 font-display text-3xl leading-none sm:text-4xl">-20% OFF</p>
+                  <p className="mt-2 font-display text-4xl leading-none">-20%</p>
                 </div>
-                <p className="mt-3 text-sm text-ink/70 sm:mt-0 sm:max-w-xs">
-                  Profitez de notre offre de bienvenue lors de votre première visite à l’institut.
+                <p className="max-w-[210px] text-sm">
+                  Profitez de l'offre de bienvenue lors de votre premiere visite.
                 </p>
               </div>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              <div className="mt-10 grid gap-3 sm:grid-cols-3">
                 {strengths.map((item) => (
-                  <div key={item} className="glass-panel flex items-center gap-3 px-4 py-4">
-                    <ShieldCheck className="h-5 w-5 text-gold" />
-                    <span className="text-sm font-semibold text-ink">{item}</span>
+                  <div
+                    key={item}
+                    className="rounded-[22px] border border-black/[0.06] bg-white/[0.72] px-4 py-4 text-sm font-semibold text-ink shadow-[0_10px_24px_rgba(23,18,20,0.04)] transition duration-500 hover:-translate-y-1 hover:shadow-card"
+                  >
+                    {item}
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
-            <div className="animate-fade-up [animation-delay:120ms]">
-              <div className="relative overflow-hidden rounded-[34px] border border-white/70 bg-white p-4 shadow-soft">
-                <div className="absolute right-6 top-6 z-10 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-ink/60 shadow">
-                  Soins beauté premium
+            <Reveal className="relative" delay={120}>
+              <div className="absolute -left-8 top-10 hidden h-32 w-32 rounded-full bg-rose/[0.45] blur-3xl lg:block" />
+              <div className="floating-soft relative overflow-hidden rounded-[36px] border border-black/[0.06] bg-[#efe5e2] shadow-soft">
+                {siteConfig.videoSrc ? (
+                  <video
+                    className="aspect-[4/5] w-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={siteConfig.videoPoster}
+                  >
+                    <source src={siteConfig.videoSrc} type="video/mp4" />
+                  </video>
+                ) : (
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <Image
+                      src="/hero-beauty-portrait.png"
+                      alt="Portrait editorial premium pour Ashanti Beauty"
+                      width={1024}
+                      height={1536}
+                      className="hero-loop-media h-full w-full object-cover"
+                      priority
+                    />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/[0.05]" />
+                <div className="absolute left-6 top-6 rounded-full bg-white/[0.88] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.60] backdrop-blur">
+                  Demo hero premium
                 </div>
-                <Image
-                  src="/hero-placeholder.svg"
-                  alt="Visuel d’ambiance premium pour Ashanti Beauty"
-                  width={900}
-                  height={1040}
-                  className="h-auto w-full rounded-[28px] object-cover"
-                  priority
-                />
-                <div className="absolute bottom-8 left-8 rounded-[26px] border border-white/80 bg-white/90 p-5 shadow-card">
-                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink/55">
-                    Ashanti Beauty
-                  </p>
-                  <p className="mt-2 font-display text-3xl leading-none">Beauté, bien-être, élégance.</p>
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                  <div className="rounded-[26px] bg-white/[0.88] px-5 py-4 shadow-card backdrop-blur">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-ink/50">
+                      Ashanti Beauty
+                    </p>
+                    <p className="mt-2 font-display text-3xl leading-none">
+                      Minimaliste. Feminin. Premium.
+                    </p>
+                  </div>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/70 bg-white/24 text-white backdrop-blur">
+                    <Play className="ml-1 h-5 w-5" />
+                  </div>
                 </div>
               </div>
-            </div>
+              <p className="mt-4 text-sm text-ink/[0.52]">
+                Hero de demonstration anime. Remplacez-le ensuite par la vraie video dans <code className="rounded bg-black/[0.05] px-2 py-1">lib/site.ts</code>.
+              </p>
+            </Reveal>
           </div>
         </section>
 
-        <section className="container-shell pb-6">
-          <div className="glass-panel grid gap-4 px-5 py-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-center lg:px-8">
-            <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5 text-gold" />
+        <section className="container-shell pb-8">
+          <Reveal className="grid gap-4 rounded-[34px] border border-black/[0.06] bg-white/[0.76] p-5 shadow-soft sm:grid-cols-2 xl:grid-cols-4 xl:p-7">
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-1 h-5 w-5 text-gold" />
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-ink/55">Adresse</p>
-                <p className="text-sm font-semibold text-ink">Balma, 5 Esplanade André Michaux</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Adresse</p>
+                <p className="mt-1 text-sm font-semibold text-ink">{siteConfig.address}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Clock3 className="h-5 w-5 text-gold" />
+            <div className="flex items-start gap-3">
+              <Clock3 className="mt-1 h-5 w-5 text-gold" />
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-ink/55">Horaires</p>
-                <p className="text-sm font-semibold text-ink">Mercredi à samedi, 10h - 19h</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Horaires</p>
+                <p className="mt-1 text-sm font-semibold text-ink">Mercredi au samedi, 10h - 19h</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Sparkles className="h-5 w-5 text-gold" />
+            <div className="flex items-start gap-3">
+              <Instagram className="mt-1 h-5 w-5 text-gold" />
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-ink/55">Spécialités</p>
-                <p className="text-sm font-semibold text-ink">Ongles, soin visage, massage, regard</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Instagram</p>
+                <p className="mt-1 text-sm font-semibold text-ink">{siteConfig.instagramHandle}</p>
               </div>
             </div>
             <a
@@ -152,213 +239,290 @@ export default function HomePage() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white"
             >
               <Phone className="h-4 w-4" />
-              Appeler maintenant
+              Appeler l'institut
             </a>
-          </div>
+          </Reveal>
         </section>
 
         <section id="prestations" className="section-space">
           <div className="container-shell">
-            <SectionHeading
-              eyebrow="Prestations"
-              title="Des soins beauté pensés pour une expérience élégante et complète."
-              description="Découvrez nos prestations phares dans notre institut de beauté à Balma : ongles, soin visage, massage, épilation et beauté du regard, dans une atmosphère chic et rassurante."
-            />
-            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {services.map((service) => (
-                <ServiceCard
+            <Reveal className="max-w-3xl">
+              <span className="section-kicker">Prestations</span>
+              <h2 className="mt-5 text-4xl sm:text-5xl">
+                Des soins choisis pour leur douceur, leur precision et leur rendu impeccable.
+              </h2>
+            </Reveal>
+
+            <div className="mt-10 grid gap-4 lg:grid-cols-2">
+              {services.map((service, index) => (
+                <Reveal
                   key={service.title}
-                  title={service.title}
-                  description={service.description}
+                  delay={index * 70}
+                  className="soft-panel grid gap-6 p-7 transition duration-500 hover:-translate-y-1 hover:shadow-card sm:grid-cols-[90px_1fr] sm:items-start sm:p-9"
+                >
+                  <div className="flex h-[84px] w-[84px] items-center justify-center rounded-full border border-black/[0.06] bg-[#f7efec] font-display text-3xl text-ink">
+                    0{index + 1}
+                  </div>
+                  <div>
+                    <h3 className="text-3xl sm:text-[2.15rem]">{service.title}</h3>
+                    <p className="mt-4 max-w-xl text-base">{service.description}</p>
+                    <a
+                      href={siteConfig.bookingHref}
+                      className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink"
+                    >
+                      Prendre rendez-vous <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal className="mt-8 overflow-hidden rounded-[36px] border border-black/[0.06] bg-white shadow-soft" delay={120}>
+              <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+                <Image
+                  src="/salon-interior-premium.png"
+                  alt="Cabine de soin premium Ashanti Beauty"
+                  width={1024}
+                  height={1536}
+                  className="h-full w-full object-cover"
                 />
-              ))}
-
-              <article className="relative overflow-hidden rounded-[30px] bg-ink p-8 text-white shadow-card md:col-span-2 xl:col-span-1">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(233,200,208,0.22),transparent_30%)]" />
-                <div className="relative">
-                  <p className="text-xs uppercase tracking-[0.28em] text-white/60">Première visite</p>
-                  <h3 className="mt-4 font-display text-4xl leading-none">-20% sur votre rendez-vous découverte</h3>
-                  <p className="mt-4 text-sm text-white/75">
-                    Une offre pensée pour découvrir Ashanti Beauty dans les meilleures conditions.
-                  </p>
-                  <a
-                    href="#contact"
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-ink"
-                  >
-                    Réserver maintenant <ArrowRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="avis" className="section-space bg-white/60">
-          <div className="container-shell">
-            <SectionHeading
-              eyebrow="Avis clientes"
-              title="Une expérience qui inspire confiance dès la première visite."
-              description="Quelques retours de clientes séduites par l’atmosphère, le professionnalisme et la qualité des soins proposés chez Ashanti Beauty."
-              align="center"
-            />
-            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {reviews.map((review) => (
-                <ReviewCard key={review.name} name={review.name} quote={review.quote} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="apropos" className="section-space">
-          <div className="container-shell grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-            <div className="relative">
-              <div className="absolute -left-4 top-10 hidden h-28 w-28 rounded-full bg-rose/40 blur-3xl sm:block" />
-              <Image
-                src="/about-placeholder.svg"
-                alt="Ambiance de l'institut Ashanti Beauty"
-                width={900}
-                height={760}
-                className="relative h-auto w-full rounded-[34px] border border-white/70 bg-white p-3 shadow-soft"
-              />
-            </div>
-            <div>
-              <SectionHeading
-                eyebrow="À propos"
-                title="Un institut accueillant, professionnel et dédié à votre mise en valeur."
-                description="Ashanti Beauty est un cocon beauté à Balma imaginé pour celles qui recherchent une expérience soignée, féminine et premium. Chaque rendez-vous est pensé avec attention pour allier bien-être, précision du geste et sens du détail."
-              />
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="glass-panel p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink/50">Philosophie</p>
-                  <p className="mt-3 text-sm">
-                    Offrir des soins beauté raffinés dans un cadre serein, propre et chaleureux.
-                  </p>
-                </div>
-                <div className="glass-panel p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink/50">Promesse</p>
-                  <p className="mt-3 text-sm">
-                    Une prise en charge personnalisée pour révéler votre éclat en toute confiance.
+                <div className="flex flex-col justify-center p-8 sm:p-10">
+                  <span className="section-kicker">Univers Ashanti</span>
+                  <h3 className="mt-5 text-3xl sm:text-4xl">
+                    Un environnement doux et soyeux, pense pour le confort et l'image haut de gamme.
+                  </h3>
+                  <p className="mt-5 max-w-xl text-base">
+                    Ces visuels donnent tout de suite la bonne sensation pour la demo cliente :
+                    un institut feminin, propre, premium et tres contemporain.
                   </p>
                 </div>
               </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section id="apropos" className="section-space pt-4">
+          <div className="container-shell grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+            <Reveal className="overflow-hidden rounded-[36px] border border-black/[0.06] bg-white shadow-soft">
+              <Image
+                src="/salon-interior-premium.png"
+                alt="Ambiance premium Ashanti Beauty"
+                width={1024}
+                height={1536}
+                className="h-auto w-full object-cover"
+              />
+            </Reveal>
+
+            <Reveal delay={120}>
+              <span className="section-kicker">L'institut</span>
+              <h2 className="mt-5 text-4xl sm:text-5xl">
+                Un lieu pense pour ralentir, se retrouver et se sentir parfaitement bien.
+              </h2>
+              <p className="mt-6 max-w-2xl text-base sm:text-lg">
+                Ashanti Beauty accueille chaque cliente dans un cadre epure, feminin et rassurant.
+                Ici, l'experience est volontairement fluide : peu de surcharge visuelle, beaucoup d'espace,
+                un accueil attentif et des soins executes avec exigence.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[28px] border border-black/[0.06] bg-white/75 p-6">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                    Notre approche
+                  </p>
+                  <p className="mt-3 text-sm">
+                    Une beaute soignee, elegante, contemporaine et jamais surchargee.
+                  </p>
+                </div>
+                <div className="rounded-[28px] border border-black/[0.06] bg-white/75 p-6">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                    Notre promesse
+                  </p>
+                  <p className="mt-3 text-sm">
+                    Un rendez-vous fluide, un resultat net et une sensation premium du debut a la fin.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section id="avis" className="section-space">
+          <div className="container-shell">
+            <Reveal className="max-w-2xl">
+              <span className="section-kicker">Avis clientes</span>
+              <h2 className="mt-5 text-4xl sm:text-5xl">
+                Une adresse que l'on recommande pour la qualite du soin et la sensation d'ensemble.
+              </h2>
+            </Reveal>
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+              {reviews.map((review) => (
+                <Reveal key={review.name} delay={80} className="soft-panel h-full p-7 transition duration-500 hover:-translate-y-1 hover:shadow-card">
+                  <div className="mb-5 flex items-center gap-1 text-gold">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star key={index} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <Quote className="h-6 w-6 text-ink/[0.18]" />
+                  <p className="mt-4 text-base">"{review.quote}"</p>
+                  <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                    {review.name}
+                  </p>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="contact" className="section-space bg-white/60">
-          <div className="container-shell">
-            <SectionHeading
-              eyebrow="Contact"
-              title="Réservez votre moment beauté chez Ashanti Beauty."
-              description="Retrouvez facilement toutes les informations utiles pour nous joindre, venir à l’institut ou préparer votre première visite à Balma."
-            />
+        <section id="reservation" className="section-space bg-white/50">
+          <div className="container-shell grid gap-8 xl:grid-cols-[0.85fr_1.15fr]">
+            <Reveal>
+              <span className="section-kicker">Reservation</span>
+              <h2 className="mt-5 text-4xl sm:text-5xl">
+                Une prise de rendez-vous simple, rapide et directement integree au site.
+              </h2>
+              <p className="mt-6 max-w-xl text-base sm:text-lg">
+                La cliente a demande une integration Planity directe. Cette section est preparee pour afficher
+                l'agenda sans sortir du site, avec un rendu propre sur mobile et desktop.
+              </p>
+              <div className="mt-8 space-y-4">
+                <div className="rounded-[28px] border border-black/[0.06] bg-white px-6 py-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                    Parcours attendu
+                  </p>
+                  <p className="mt-3 text-sm">
+                    Hero video, scrolling fluide, puis reservation sans friction dans le site.
+                  </p>
+                </div>
+                <div className="rounded-[28px] border border-black/[0.06] bg-white px-6 py-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                    Action restante
+                  </p>
+                  <p className="mt-3 text-sm">
+                    Ajouter le vrai lien ou embed Planity fourni par la cliente.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
 
-            <div className="mt-10 grid gap-6 xl:grid-cols-[0.92fr_1.08fr]">
-              <div className="space-y-6">
-                <div className="glass-panel p-7">
+            <Reveal delay={120}>
+              <BookingPanel />
+            </Reveal>
+          </div>
+        </section>
+
+        <section id="contact" className="section-space">
+          <div className="container-shell">
+            <Reveal className="max-w-3xl">
+              <span className="section-kicker">Contact</span>
+              <h2 className="mt-5 text-4xl sm:text-5xl">
+                Toutes les informations utiles pour venir, appeler ou ecrire rapidement.
+              </h2>
+            </Reveal>
+
+            <div className="mt-10 grid gap-8 xl:grid-cols-[0.92fr_1.08fr]">
+              <Reveal className="space-y-5">
+                <div className="soft-panel p-7 transition duration-500 hover:shadow-card">
                   <div className="space-y-5">
                     <a href={siteConfig.phoneHref} className="flex items-start gap-4">
                       <Phone className="mt-1 h-5 w-5 text-gold" />
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-ink/50">Téléphone</p>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Telephone</p>
                         <p className="mt-1 font-semibold text-ink">{siteConfig.phoneDisplay}</p>
                       </div>
                     </a>
                     <a href={`mailto:${siteConfig.email}`} className="flex items-start gap-4">
                       <Mail className="mt-1 h-5 w-5 text-gold" />
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-ink/50">Email</p>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Email</p>
                         <p className="mt-1 font-semibold text-ink">{siteConfig.email}</p>
                       </div>
                     </a>
-                    <a
-                      href="https://maps.google.com/?q=5%20Esplanade%20Andr%C3%A9%20Michaux%2C%2031130%20Balma"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-start gap-4"
-                    >
+                    <a href={siteConfig.mapsHref} target="_blank" rel="noreferrer" className="flex items-start gap-4">
                       <MapPin className="mt-1 h-5 w-5 text-gold" />
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-ink/50">Adresse</p>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Adresse</p>
                         <p className="mt-1 font-semibold text-ink">{siteConfig.address}</p>
                       </div>
                     </a>
                     <a href={siteConfig.instagramHref} target="_blank" rel="noreferrer" className="flex items-start gap-4">
                       <Instagram className="mt-1 h-5 w-5 text-gold" />
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-ink/50">Instagram</p>
-                        <p className="mt-1 font-semibold text-ink">@ashanti.beauty</p>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Instagram</p>
+                        <p className="mt-1 font-semibold text-ink">{siteConfig.instagramHandle}</p>
                       </div>
                     </a>
                   </div>
                 </div>
 
-                <div className="glass-panel p-7">
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/50">Horaires</p>
+                <a
+                  href={siteConfig.instagramHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="soft-panel flex items-center gap-4 p-5 transition duration-500 hover:-translate-y-1 hover:shadow-card"
+                >
+                  <Image
+                    src="/instagram-profile.jpg"
+                    alt="Profil Instagram Ashanti Beauty"
+                    width={84}
+                    height={84}
+                    className="h-16 w-16 rounded-full object-cover"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                      Instagram
+                    </p>
+                    <p className="mt-2 font-semibold text-ink">{siteConfig.instagramHandle}</p>
+                    <p className="mt-1 text-sm text-ink/[0.62]">
+                      Profil public recupere pour la demo visuelle.
+                    </p>
+                  </div>
+                </a>
+
+                <div className="soft-panel p-7 transition duration-500 hover:shadow-card">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
+                    Horaires
+                  </p>
                   <div className="mt-5 space-y-3">
                     {siteConfig.hours.map((slot) => (
-                      <div key={slot.day} className="flex items-center justify-between gap-4 border-b border-ink/10 pb-3 last:border-none last:pb-0">
-                        <span className="text-sm font-medium text-ink/65">{slot.day}</span>
+                      <div
+                        key={slot.day}
+                        className="flex items-center justify-between gap-4 border-b border-black/[0.06] pb-3 last:border-none last:pb-0"
+                      >
+                        <span className="text-sm font-medium text-ink/[0.62]">{slot.day}</span>
                         <span className="text-sm font-semibold text-ink">{slot.value}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="glass-panel p-5 text-center">
-                    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink/50">QR réservation</p>
-                    <Image
-                      src="/qr-booking-placeholder.svg"
-                      alt="Emplacement QR code de réservation"
-                      width={240}
-                      height={240}
-                      className="mx-auto mt-4 h-36 w-36 rounded-2xl"
-                    />
-                    <p className="mt-3 text-xs text-ink/55">Remplacez ce placeholder par le vrai QR code de réservation.</p>
-                  </div>
-                  <div className="glass-panel p-5 text-center">
-                    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink/50">QR Instagram</p>
-                    <Image
-                      src="/qr-instagram-placeholder.svg"
-                      alt="Emplacement QR code Instagram"
-                      width={240}
-                      height={240}
-                      className="mx-auto mt-4 h-36 w-36 rounded-2xl"
-                    />
-                    <p className="mt-3 text-xs text-ink/55">Ajoutez ici le QR code du compte Instagram officiel.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <ContactForm />
-
-                <div className="overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-soft">
+                <div className="overflow-hidden rounded-[34px] border border-black/[0.06] bg-white shadow-soft transition duration-500 hover:shadow-card">
                   <iframe
                     title="Google Maps - Ashanti Beauty Balma"
                     src={siteConfig.mapsEmbed}
                     loading="lazy"
-                    className="h-[360px] w-full"
+                    className="h-[320px] w-full"
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
+              </Reveal>
 
-                <div className="glass-panel flex flex-wrap items-center gap-4 p-6">
-                  <div className="flex min-w-[180px] flex-1 items-center gap-3">
+              <Reveal className="space-y-6" delay={120}>
+                <ContactForm />
+                <div className="soft-panel flex flex-wrap items-center gap-4 p-6 transition duration-500 hover:shadow-card">
+                  <div className="flex min-w-[220px] flex-1 items-center gap-3">
                     <Star className="h-5 w-5 text-gold" />
                     <p className="text-sm">
-                      Première visite ? Pensez à mentionner l’offre de bienvenue à <span className="font-semibold text-ink">-20%</span>.
+                      Premiere visite ? Pensez a mentionner l'offre de bienvenue a <span className="font-semibold text-ink">-20%</span>.
                     </p>
                   </div>
                   <a
                     href={siteConfig.bookingHref}
                     className="rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white"
                   >
-                    Réserver maintenant
+                    Reserver maintenant
                   </a>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>

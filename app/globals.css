@@ -3,8 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --background: #fffafb;
-  --foreground: #241f23;
+  --background: #fbf7f4;
+  --foreground: #171214;
+}
+
+@keyframes slowPan {
+  0% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+  100% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes subtleFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 html {
@@ -13,13 +37,36 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top, rgba(233, 200, 208, 0.14), transparent 30%),
-    linear-gradient(180deg, #fffafb 0%, #ffffff 55%, #fcf6f8 100%);
+    radial-gradient(circle at top left, rgba(233, 200, 208, 0.16), transparent 32%),
+    linear-gradient(180deg, #fdf9f7 0%, #ffffff 44%, #f8f1ee 100%);
   color: var(--foreground);
 }
 
+.hero-loop-media {
+  animation: slowPan 12s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.floating-soft {
+  animation: subtleFloat 7s ease-in-out infinite;
+}
+
 * {
-  border-color: rgba(36, 31, 35, 0.08);
+  border-color: rgba(23, 18, 20, 0.08);
+}
+
+.reveal-block {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @layer base {
@@ -27,28 +74,32 @@ body {
   h2,
   h3,
   h4 {
-    @apply font-display tracking-[0.01em] text-ink;
+    @apply font-display tracking-[-0.03em] text-ink;
   }
 
   p {
-    @apply leading-7 text-ink/75;
+    @apply leading-7 text-ink/[0.72];
   }
 }
 
 @layer components {
   .container-shell {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-10;
   }
 
   .section-space {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-16 sm:py-20 lg:py-28;
   }
 
-  .glass-panel {
-    @apply rounded-[30px] border border-white/70 bg-white/80 shadow-soft backdrop-blur;
+  .soft-panel {
+    @apply rounded-[32px] border border-black/[0.05] bg-white/80 shadow-soft backdrop-blur;
   }
 
   .section-kicker {
-    @apply mb-4 inline-flex rounded-full border border-rose/60 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-ink/70;
+    @apply inline-flex rounded-full border border-black/10 bg-white/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.60];
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-black/[0.10] to-transparent;
   }
 }

@@ -1,5 +1,8 @@
 .next
+.next-preview
 node_modules
 out
 dist
 *.log
+
+.vercel
