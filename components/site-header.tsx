@@ -13,12 +13,12 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[rgba(14,11,13,0.34)] text-white backdrop-blur-xl">
       <div className="container-shell">
-        <div className="flex min-h-20 items-center justify-between gap-4">
+        <div className="flex min-h-24 items-center justify-between gap-4">
           <a href="#accueil" className="min-w-0" aria-label="Ashanti Beauty - Accueil">
             <img
               src={siteConfig.logoWhite}
               alt="Ashanti Beauty"
-              className="h-10 w-auto max-w-[170px] object-contain"
+              className="h-16 w-auto max-w-[250px] object-contain sm:h-20"
             />
           </a>
 
