@@ -124,26 +124,26 @@ export default function HomePage() {
           >
             <source src={siteConfig.videoSrc} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,9,11,0.92)_0%,rgba(12,9,11,0.68)_42%,rgba(12,9,11,0.22)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_58%,rgba(0,0,0,0.38),transparent_46%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,9,11,0.70)_0%,rgba(12,9,11,0.42)_42%,rgba(12,9,11,0.10)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_36%_54%,rgba(0,0,0,0.24),transparent_50%)]" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fff8fb] to-transparent" />
 
           <div className="container-shell relative flex min-h-screen items-end pb-14 pt-32 sm:pb-20">
-            <Reveal className="max-w-4xl">
+            <Reveal className="w-full max-w-6xl">
               <img
                 src={siteConfig.logoWhite}
                 alt="Ashanti Beauty"
-                className="mb-9 h-auto w-[290px] object-contain drop-shadow-[0_8px_36px_rgba(255,255,255,0.28)] sm:w-[430px]"
+                className="mb-8 h-auto w-[230px] object-contain drop-shadow-[0_8px_36px_rgba(255,255,255,0.24)] sm:w-[320px]"
               />
               <p className="text-xs font-semibold uppercase tracking-[0.42em] text-white/70">
                 Institut de beaute premium a Balma
               </p>
-              <h1 className="mt-6 max-w-4xl font-display text-6xl font-medium leading-[0.88] text-white drop-shadow-[0_10px_38px_rgba(0,0,0,0.36)] sm:text-8xl lg:text-[8.2rem]">
-                Une parenthese beaute, douce et luxueuse.
+              <h1 className="mt-8 flex max-w-5xl flex-col font-display text-7xl font-medium leading-[0.82] text-white drop-shadow-[0_14px_44px_rgba(0,0,0,0.36)] sm:text-9xl lg:text-[10rem]">
+                <span className="hero-word-primary block">Ashanti</span>
+                <span className="hero-word-secondary block self-end pr-2 sm:pr-10">Beauty</span>
               </h1>
-              <p className="mt-7 max-w-2xl rounded-[28px] border border-white/14 bg-black/42 px-5 py-4 text-base font-semibold leading-8 text-white shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-md sm:px-6 sm:text-xl">
-                Un univers feminin, epure et signature pour sublimer le regard, les ongles, la peau et le bien-etre
-                avec precision.
+              <p className="mt-8 max-w-2xl rounded-full border border-white/18 bg-black/28 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_18px_50px_rgba(0,0,0,0.24)] backdrop-blur-md sm:px-6">
+                Regard, ongles, peau et bien-etre dans un univers doux et precis.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">

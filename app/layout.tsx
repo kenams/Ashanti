@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Bodoni_Moda, Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 
-const playfair = Playfair_Display({
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-bodoni",
   weight: ["400", "500", "600", "700"]
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${playfair.variable} ${manrope.variable}`}>
+    <html lang="fr" className={`${bodoni.variable} ${manrope.variable}`}>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
