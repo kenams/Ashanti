@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Ashanti Beauty",
-  title: "Ashanti Beauty | Institut de beaute premium a Balma",
+  title: "Ashanti Beauty | Institut de beauté premium à Balma",
   description:
-    "Ashanti Beauty, institut de beaute a Balma, propose soins beaute, ongles, soin visage, massage, epilation et beaute du regard dans un univers minimaliste, raffine et premium.",
+    "Ashanti Beauty, institut de beauté à Balma, propose soins beauté, ongles, soin visage, massage, épilation et beauté du regard dans un univers minimaliste, raffiné et premium.",
   phoneDisplay: "07 67 11 35 48",
   phoneHref: "tel:+33767113548",
   email: "contact@ashanti-beauty.fr",
@@ -31,27 +31,27 @@ export const services = [
   {
     title: "Brows",
     description:
-      "Brow lift, restructuration, coloration au henne, ombre shading et light brows pour redessiner le regard avec finesse."
+      "Brow lift, restructuration, coloration au henné, ombre shading et light brows pour redessiner le regard avec finesse."
   },
   {
     title: "Lashes",
     description:
-      "Du cil a cil au mega volume russe, avec rehaussement de cils pour ouvrir le regard et creer un resultat sur mesure."
+      "Du cil à cil au méga volume russe, avec rehaussement de cils pour ouvrir le regard et créer un résultat sur mesure."
   },
   {
     title: "Nails",
     description:
-      "Manucure russe, pose gel, pose americaine, vernis semi-permanent et nail art dans une execution propre et elegante."
+      "Manucure russe, pose gel, pose américaine, vernis semi-permanent et nail art dans une exécution propre et élégante."
   },
   {
     title: "Skin & Body",
     description:
-      "Soins visage, soins corps, drainage lymphatique, shiatsu, pedicure et epilation pour une prise en charge complete."
+      "Soins visage, soins corps, drainage lymphatique, shiatsu, pédicure et épilation pour une prise en charge complète."
   },
   {
     title: "Massages",
     description:
-      "Californien, balinais, pierres chaudes, deep tissue ou prenatal pour relacher les tensions et retrouver l'equilibre."
+      "Californien, balinais, pierres chaudes, deep tissue ou prénatal pour relâcher les tensions et retrouver l'équilibre."
   }
 ];
 
@@ -59,26 +59,26 @@ export const reviews = [
   {
     name: "Camille R.",
     quote:
-      "Un lieu tres elegant, avec un accueil delicat et une vraie sensation de qualite des l'arrivee."
+      "Un lieu très élégant, avec un accueil délicat et une vraie sensation de qualité dès l'arrivée."
   },
   {
     name: "Sarah M.",
     quote:
-      "Le soin visage etait parfait. Le lieu est beau, calme et le resultat etait visible tout de suite."
+      "Le soin visage était parfait. Le lieu est beau, calme et le résultat était visible tout de suite."
   },
   {
     name: "Ines D.",
     quote:
-      "On se sent prise en charge avec douceur. Tout est propre, raffine et tres bien pense."
+      "On se sent prise en charge avec douceur. Tout est propre, raffiné et très bien pensé."
   },
   {
     name: "Julie T.",
     quote:
-      "J'ai adore l'ambiance et le soin apporte aux details. Une vraie adresse premium a Balma."
+      "J'ai adoré l'ambiance et le soin apporté aux détails. Une vraie adresse premium à Balma."
   }
 ];
 
-export const strengths = ["Qualite", "Hygiene", "Accueil personnalise"];
+export const strengths = ["Qualité", "Hygiène", "Accueil personnalisé"];
 
 export const partners = [
   "Phibrows",
@@ -94,7 +94,7 @@ export const partners = [
 export const galleryImages = [
   {
     src: "/brand/ashanti-reception.jpeg",
-    alt: "Reception premium Ashanti Beauty",
+    alt: "Réception premium Ashanti Beauty",
     label: "Accueil"
   },
   {
@@ -109,12 +109,12 @@ export const galleryImages = [
   },
   {
     src: "/brand/ashanti-brows.jpeg",
-    alt: "Resultat brows Ashanti Beauty",
+    alt: "Résultat brows Ashanti Beauty",
     label: "Brows"
   },
   {
     src: "/brand/ashanti-detail.jpeg",
-    alt: "Detail institut Ashanti Beauty",
-    label: "Details"
+    alt: "Détail institut Ashanti Beauty",
+    label: "Détails"
   }
 ];

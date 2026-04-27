@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import {
   ArrowRight,
   CalendarDays,
@@ -17,6 +20,135 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyMobileCTA } from "@/components/sticky-mobile-cta";
 import { galleryImages, partners, reviews, services, siteConfig, strengths } from "@/lib/site";
+
+type Locale = "fr" | "en";
+
+const pageCopy = {
+  fr: {
+    bookingTitle: "Réservation",
+    bookingHeading: "Planity pourra être intégré directement ici.",
+    bookingText:
+      "La section est prête pour accueillir le module de réservation final. En attendant, les boutons guident vers le contact et gardent le parcours fluide.",
+    phone: "Téléphone",
+    heroKicker: "Institut de beauté premium à Balma",
+    heroBaseline: "Regard, ongles, peau et bien-être dans un univers doux et précis.",
+    bookNow: "Réserver maintenant",
+    discover: "Découvrir l'univers",
+    address: "Adresse",
+    hours: "Horaires",
+    openingShort: "Mercredi au samedi, 10h - 19h",
+    callStudio: "Appeler l'institut",
+    servicesKicker: "Prestations",
+    servicesTitle: "Une carte courte, experte et très lisible.",
+    servicesText:
+      "Le parcours met l'accent sur les gestes signature : regard, ongles, peau, massages et rituels corps. L'interface reste minimaliste pour laisser respirer les visuels.",
+    studioKicker: "L'institut",
+    studioBadge: "Minimaliste, doux, précis.",
+    studioTitle: "Une identité plus forte, moins standard, plus mémorable.",
+    studioText:
+      "La direction artistique rapproche le site d'un univers éditorial : vidéo immersive, logo visible, grands titres, espaces plus calmes et détails premium.",
+    signature: "Signature",
+    signatureText: "Un langage visuel rose, noir, crème et or discret, cohérent avec le logo.",
+    experience: "Expérience",
+    experienceText: "Un site plus impactant dès l'arrivée, tout en restant fluide et lisible.",
+    galleryKicker: "Galerie",
+    galleryTitle: "Des images réelles pour mieux se projeter.",
+    reviewsKicker: "Avis clientes",
+    reviewsTitle: "Une adresse premium, douce et recommandable.",
+    bookingSectionTitle: "Une prise de rendez-vous simple et élégante.",
+    bookingSectionText:
+      "Cette zone est prête pour l'intégration Planity finale. Le rendu garde une intention premium même en mode preview.",
+    contactKicker: "Contact",
+    contactTitle: "Venir, appeler ou demander un rendez-vous.",
+    firstVisit: "Première visite ? Profitez de l'offre de bienvenue à",
+    reserve: "Réserver"
+  },
+  en: {
+    bookingTitle: "Booking",
+    bookingHeading: "Planity can be integrated directly here.",
+    bookingText:
+      "This section is ready for the final booking module. Until then, the buttons keep the journey smooth and guide visitors to contact.",
+    phone: "Phone",
+    heroKicker: "Premium beauty studio in Balma",
+    heroBaseline: "Brows, nails, skin and wellness in a soft, precise universe.",
+    bookNow: "Book now",
+    discover: "Discover the universe",
+    address: "Address",
+    hours: "Opening hours",
+    openingShort: "Wednesday to Saturday, 10am - 7pm",
+    callStudio: "Call the studio",
+    servicesKicker: "Services",
+    servicesTitle: "A short, expert and easy-to-read menu.",
+    servicesText:
+      "The journey focuses on signature gestures: brows, nails, skin, massages and body rituals. The interface stays minimal so the visuals can breathe.",
+    studioKicker: "The studio",
+    studioBadge: "Minimal, soft, precise.",
+    studioTitle: "A stronger, more memorable identity.",
+    studioText:
+      "The art direction moves the website closer to an editorial universe: immersive video, visible branding, large titles, calmer spaces and premium details.",
+    signature: "Signature",
+    signatureText: "A visual language of pink, black, cream and subtle gold, consistent with the logo.",
+    experience: "Experience",
+    experienceText: "A more impactful website from the first screen, while staying fluid and readable.",
+    galleryKicker: "Gallery",
+    galleryTitle: "Real images to make the final vision tangible.",
+    reviewsKicker: "Client reviews",
+    reviewsTitle: "A premium, soft and recommendable address.",
+    bookingSectionTitle: "Simple and elegant appointment booking.",
+    bookingSectionText:
+      "This area is ready for the final Planity integration. The preview keeps a premium intention even before the final booking module.",
+    contactKicker: "Contact",
+    contactTitle: "Visit, call or request an appointment.",
+    firstVisit: "First visit? Enjoy a welcome offer of",
+    reserve: "Book"
+  }
+};
+
+const localizedServices = {
+  fr: services,
+  en: [
+    {
+      title: "Brows",
+      description:
+        "Brow lift, reshaping, henna tint, ombre shading and light brows to define the eyes with precision."
+    },
+    {
+      title: "Lashes",
+      description:
+        "From classic lash extensions to mega Russian volume, with lash lifts for a tailor-made result."
+    },
+    {
+      title: "Nails",
+      description:
+        "Russian manicure, gel nails, American tips, semi-permanent polish and nail art with a clean, elegant finish."
+    },
+    {
+      title: "Skin & Body",
+      description:
+        "Facials, body care, lymphatic drainage, shiatsu, pedicure and waxing for a complete beauty experience."
+    },
+    {
+      title: "Massages",
+      description:
+        "Californian, Balinese, hot stone, deep tissue or prenatal massages to release tension and restore balance."
+    }
+  ]
+};
+
+const localizedReviews = {
+  fr: reviews,
+  en: [
+    { name: "Camille R.", quote: "A very elegant place, with delicate service and a true sense of quality from arrival." },
+    { name: "Sarah M.", quote: "The facial was perfect. The place is beautiful, calm, and the result was visible immediately." },
+    { name: "Ines D.", quote: "You feel gently taken care of. Everything is clean, refined and thoughtfully designed." },
+    { name: "Julie T.", quote: "I loved the atmosphere and the attention to detail. A true premium address in Balma." }
+  ]
+};
+
+const localizedStrengths = {
+  fr: strengths,
+  en: ["Quality", "Hygiene", "Personalised care"]
+};
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -37,7 +169,9 @@ const jsonLd = {
   url: "https://ashanti-beauty.fr"
 };
 
-function BookingPanel() {
+function BookingPanel({ locale }: { locale: Locale }) {
+  const content = pageCopy[locale];
+
   if (siteConfig.planityEmbedUrl) {
     return (
       <div className="overflow-hidden rounded-[34px] border border-black/[0.06] bg-white shadow-soft">
@@ -53,11 +187,10 @@ function BookingPanel() {
 
   return (
     <div className="soft-panel p-8 sm:p-10">
-      <p className="section-kicker">Reservation</p>
-      <h3 className="mt-5 text-3xl sm:text-4xl">Planity pourra etre integre directement ici.</h3>
+      <p className="section-kicker">{content.bookingTitle}</p>
+      <h3 className="mt-5 text-3xl sm:text-4xl">{content.bookingHeading}</h3>
       <p className="mt-4 max-w-2xl text-base sm:text-lg">
-        La section est prete pour accueillir le module de reservation final. En attendant, les boutons guident vers le
-        contact et gardent le parcours fluide.
+        {content.bookingText}
       </p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <a
@@ -65,7 +198,7 @@ function BookingPanel() {
           className="rounded-[28px] border border-black/[0.08] bg-white p-6 transition hover:-translate-y-1 hover:shadow-card"
         >
           <Phone className="h-5 w-5 text-gold" />
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.28em] text-ink/45">Telephone</p>
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.28em] text-ink/45">{content.phone}</p>
           <p className="mt-2 text-lg font-semibold text-ink">{siteConfig.phoneDisplay}</p>
         </a>
         <a
@@ -103,6 +236,12 @@ function PartnerMarquee() {
 }
 
 export default function HomePage() {
+  const [locale, setLocale] = useState<Locale>("fr");
+  const content = pageCopy[locale];
+  const activeServices = localizedServices[locale];
+  const activeReviews = localizedReviews[locale];
+  const activeStrengths = localizedStrengths[locale];
+
   return (
     <>
       <script
@@ -110,7 +249,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <SiteHeader />
+      <SiteHeader locale={locale} onLocaleChange={setLocale} />
 
       <main id="accueil">
         <section className="relative min-h-screen overflow-hidden bg-ink text-white">
@@ -136,14 +275,14 @@ export default function HomePage() {
                 className="mb-8 h-auto w-[230px] object-contain drop-shadow-[0_8px_36px_rgba(255,255,255,0.24)] sm:w-[320px]"
               />
               <p className="text-xs font-semibold uppercase tracking-[0.42em] text-white/70">
-                Institut de beaute premium a Balma
+                {content.heroKicker}
               </p>
               <h1 className="mt-8 flex max-w-5xl flex-col font-display text-7xl font-medium leading-[0.82] text-white drop-shadow-[0_14px_44px_rgba(0,0,0,0.36)] sm:text-9xl lg:text-[10rem]">
                 <span className="hero-word-primary block">Ashanti</span>
                 <span className="hero-word-secondary block self-end pr-2 sm:pr-10">Beauty</span>
               </h1>
               <p className="mt-8 max-w-2xl rounded-full border border-white/18 bg-black/28 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_18px_50px_rgba(0,0,0,0.24)] backdrop-blur-md sm:px-6">
-                Regard, ongles, peau et bien-etre dans un univers doux et precis.
+                {content.heroBaseline}
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -151,18 +290,18 @@ export default function HomePage() {
                   href={siteConfig.bookingHref}
                   className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-ink transition hover:bg-[#f7d9e8]"
                 >
-                  Reserver maintenant <CalendarDays className="h-4 w-4" />
+                  {content.bookNow} <CalendarDays className="h-4 w-4" />
                 </a>
                 <a
                   href="#prestations"
                   className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
                 >
-                  Decouvrir l'univers <ArrowRight className="h-4 w-4" />
+                  {content.discover} <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
 
               <div className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
-                {strengths.map((item) => (
+                {activeStrengths.map((item) => (
                   <div key={item} className="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white/86 backdrop-blur">
                     {item}
                   </div>
@@ -177,15 +316,15 @@ export default function HomePage() {
             <div className="flex items-start gap-3">
               <MapPin className="mt-1 h-5 w-5 text-gold" />
               <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Adresse</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">{content.address}</p>
                 <p className="mt-1 text-sm font-semibold text-ink">{siteConfig.address}</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <Clock3 className="mt-1 h-5 w-5 text-gold" />
               <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Horaires</p>
-                <p className="mt-1 text-sm font-semibold text-ink">Mercredi au samedi, 10h - 19h</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">{content.hours}</p>
+                <p className="mt-1 text-sm font-semibold text-ink">{content.openingShort}</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -200,7 +339,7 @@ export default function HomePage() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white"
             >
               <Phone className="h-4 w-4" />
-              Appeler l'institut
+              {content.callStudio}
             </a>
           </Reveal>
         </section>
@@ -209,19 +348,18 @@ export default function HomePage() {
           <div className="container-shell">
             <Reveal className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
               <div>
-                <span className="section-kicker">Prestations</span>
+                <span className="section-kicker">{content.servicesKicker}</span>
                 <h2 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-                  Une carte courte, experte et tres lisible.
+                  {content.servicesTitle}
                 </h2>
               </div>
               <p className="max-w-2xl text-base sm:text-lg">
-                Le parcours met l'accent sur les gestes signature : regard, ongles, peau, massages et rituels corps.
-                L'interface reste plus minimaliste pour laisser respirer les visuels.
+                {content.servicesText}
               </p>
             </Reveal>
 
             <div className="mt-12 grid gap-px overflow-hidden rounded-[34px] border border-black/[0.06] bg-black/[0.06] shadow-soft lg:grid-cols-5">
-              {services.map((service, index) => (
+              {activeServices.map((service, index) => (
                 <Reveal key={service.title} delay={index * 60} className="group bg-white p-7 transition duration-500 hover:bg-[#fff4fa] lg:min-h-[360px]">
                   <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/35">0{index + 1}</p>
                   <h3 className="mt-10 text-4xl leading-none">{service.title}</h3>
@@ -230,7 +368,7 @@ export default function HomePage() {
                     href={siteConfig.bookingHref}
                     className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition group-hover:gap-3"
                   >
-                    Reserver <ArrowRight className="h-4 w-4" />
+                    {content.reserve} <ArrowRight className="h-4 w-4" />
                   </a>
                 </Reveal>
               ))}
@@ -262,28 +400,27 @@ export default function HomePage() {
                 </div>
                 <div className="rounded-[38px] border border-black/[0.06] bg-ink p-8 text-white shadow-soft">
                   <Sparkles className="h-6 w-6 text-[#f7d9e8]" />
-                  <p className="mt-8 font-display text-4xl leading-none text-white">Minimaliste, doux, precis.</p>
+                  <p className="mt-8 font-display text-4xl leading-none text-white">{content.studioBadge}</p>
                 </div>
               </div>
             </Reveal>
 
             <Reveal delay={120}>
-              <span className="section-kicker">L'institut</span>
+              <span className="section-kicker">{content.studioKicker}</span>
               <h2 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-                Une identite plus forte, moins standard, plus memorable.
+                {content.studioTitle}
               </h2>
               <p className="mt-7 max-w-2xl text-base sm:text-lg">
-                La direction artistique rapproche le site d'un univers editorial : video immersive, logo visible,
-                grands titres, espaces plus calmes et details premium.
+                {content.studioText}
               </p>
               <div className="mt-9 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[28px] border border-black/[0.06] bg-white/75 p-6">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">Signature</p>
-                  <p className="mt-3 text-sm">Un langage visuel rose, noir, creme et or discret, coherent avec le logo.</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">{content.signature}</p>
+                  <p className="mt-3 text-sm">{content.signatureText}</p>
                 </div>
                 <div className="rounded-[28px] border border-black/[0.06] bg-white/75 p-6">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">Experience</p>
-                  <p className="mt-3 text-sm">Un site plus impactant des l'arrivee, tout en restant fluide et lisible.</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">{content.experience}</p>
+                  <p className="mt-3 text-sm">{content.experienceText}</p>
                 </div>
               </div>
             </Reveal>
@@ -295,9 +432,9 @@ export default function HomePage() {
         <section className="section-space">
           <div className="container-shell">
             <Reveal className="max-w-3xl">
-              <span className="section-kicker">Galerie</span>
+              <span className="section-kicker">{content.galleryKicker}</span>
               <h2 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-                Des images reelles pour mieux se projeter.
+                {content.galleryTitle}
               </h2>
             </Reveal>
             <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -326,14 +463,14 @@ export default function HomePage() {
         <section id="avis" className="section-space bg-white/55">
           <div className="container-shell">
             <Reveal className="max-w-2xl">
-              <span className="section-kicker">Avis clientes</span>
+              <span className="section-kicker">{content.reviewsKicker}</span>
               <h2 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-                Une adresse premium, douce et recommandable.
+                {content.reviewsTitle}
               </h2>
             </Reveal>
 
             <div className="mt-10 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
-              {reviews.map((review) => (
+              {activeReviews.map((review) => (
                 <Reveal key={review.name} delay={80} className="soft-panel h-full p-7 transition duration-500 hover:-translate-y-1 hover:shadow-card">
                   <div className="mb-5 flex items-center gap-1 text-gold">
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -354,17 +491,16 @@ export default function HomePage() {
         <section id="reservation" className="section-space">
           <div className="container-shell grid gap-8 xl:grid-cols-[0.85fr_1.15fr]">
             <Reveal>
-              <span className="section-kicker">Reservation</span>
+              <span className="section-kicker">{content.bookingTitle}</span>
               <h2 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-                Une prise de rendez-vous simple et elegante.
+                {content.bookingSectionTitle}
               </h2>
               <p className="mt-6 max-w-xl text-base sm:text-lg">
-                Cette zone est prete pour l'integration Planity finale. Le rendu garde une intention premium meme en
-                mode preview.
+                {content.bookingSectionText}
               </p>
             </Reveal>
             <Reveal delay={120}>
-              <BookingPanel />
+              <BookingPanel locale={locale} />
             </Reveal>
           </div>
         </section>
@@ -372,9 +508,9 @@ export default function HomePage() {
         <section id="contact" className="section-space pt-8">
           <div className="container-shell">
             <Reveal className="max-w-3xl">
-              <span className="section-kicker">Contact</span>
+              <span className="section-kicker">{content.contactKicker}</span>
               <h2 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-                Venir, appeler ou demander un rendez-vous.
+                {content.contactTitle}
               </h2>
             </Reveal>
 
@@ -385,7 +521,7 @@ export default function HomePage() {
                     <a href={siteConfig.phoneHref} className="flex items-start gap-4">
                       <Phone className="mt-1 h-5 w-5 text-gold" />
                       <div>
-                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Telephone</p>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">{content.phone}</p>
                         <p className="mt-1 font-semibold text-ink">{siteConfig.phoneDisplay}</p>
                       </div>
                     </a>
@@ -399,7 +535,7 @@ export default function HomePage() {
                     <a href={siteConfig.mapsHref} target="_blank" rel="noreferrer" className="flex items-start gap-4">
                       <MapPin className="mt-1 h-5 w-5 text-gold" />
                       <div>
-                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">Adresse</p>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-ink/[0.45]">{content.address}</p>
                         <p className="mt-1 font-semibold text-ink">{siteConfig.address}</p>
                       </div>
                     </a>
@@ -418,16 +554,16 @@ export default function HomePage() {
               </Reveal>
 
               <Reveal className="space-y-6" delay={120}>
-                <ContactForm />
+                <ContactForm locale={locale} />
                 <div className="soft-panel flex flex-wrap items-center gap-4 p-6 transition duration-500 hover:shadow-card">
                   <div className="flex min-w-[220px] flex-1 items-center gap-3">
                     <Star className="h-5 w-5 text-gold" />
                     <p className="text-sm">
-                      Premiere visite ? Profitez de l'offre de bienvenue a <span className="font-semibold text-ink">-20%</span>.
+                      {content.firstVisit} <span className="font-semibold text-ink">-20%</span>.
                     </p>
                   </div>
                   <a href={siteConfig.bookingHref} className="rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">
-                    Reserver maintenant
+                    {content.bookNow}
                   </a>
                 </div>
               </Reveal>
@@ -436,8 +572,8 @@ export default function HomePage() {
         </section>
       </main>
 
-      <SiteFooter />
-      <StickyMobileCTA />
+      <SiteFooter locale={locale} />
+      <StickyMobileCTA locale={locale} />
     </>
   );
 }

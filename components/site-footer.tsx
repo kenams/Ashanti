@@ -1,14 +1,27 @@
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 
-export function SiteFooter() {
+type Locale = "fr" | "en";
+
+export function SiteFooter({ locale = "fr" }: { locale?: Locale }) {
+  const hours =
+    locale === "fr"
+      ? siteConfig.hours
+      : [
+          { day: "Tuesday", value: "12pm - 6pm" },
+          { day: "Wednesday - Saturday", value: "10am - 7pm" },
+          { day: "Sunday", value: "10am - 6pm" }
+        ];
+
   return (
     <footer className="border-t border-black/[0.06] bg-[#f8f1ee]">
       <div className="container-shell grid gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr_0.9fr]">
         <div>
           <p className="font-display text-4xl leading-none">Ashanti Beauty</p>
           <p className="mt-4 max-w-md text-sm">
-            Un institut de beaute a Balma imagine comme une parenthese douce, elegante et parfaitement maitrisee.
+            {locale === "fr"
+              ? "Un institut de beauté à Balma imaginé comme une parenthèse douce, élégante et parfaitement maîtrisée."
+              : "A beauty studio in Balma designed as a soft, elegant and carefully crafted pause."}
           </p>
         </div>
 
@@ -48,19 +61,19 @@ export function SiteFooter() {
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/[0.45]">
-            Horaires
+            {locale === "fr" ? "Horaires" : "Opening hours"}
           </p>
           <div className="mt-5 space-y-3 text-sm text-ink/[0.72]">
-            {siteConfig.hours.map((slot) => (
+            {hours.map((slot) => (
               <p key={slot.day}>
                 {slot.day} : {slot.value}
               </p>
             ))}
             <a href="#" className="block hover:text-ink">
-              Mentions legales
+              {locale === "fr" ? "Mentions légales" : "Legal notice"}
             </a>
             <a href="#" className="block hover:text-ink">
-              Politique de confidentialite
+              {locale === "fr" ? "Politique de confidentialité" : "Privacy policy"}
             </a>
           </div>
         </div>
