@@ -16,8 +16,10 @@ export const siteConfig = {
   bookingHref: "#reservation",
   planityUrl: "",
   planityEmbedUrl: "",
-  videoSrc: "",
-  videoPoster: "/hero-beauty-portrait.png",
+  videoSrc: "/brand/ashanti-hero-video.mp4",
+  videoPoster: "/brand/ashanti-lounge.jpeg",
+  logoWhite: "/brand/ashanti-logo-white.png",
+  logoPink: "/brand/ashanti-logo-pink.png",
   hours: [
     { day: "Mardi", value: "12h - 18h" },
     { day: "Mercredi - Samedi", value: "10h - 19h" },
@@ -77,3 +79,42 @@ export const reviews = [
 ];
 
 export const strengths = ["Qualite", "Hygiene", "Accueil personnalise"];
+
+export const partners = [
+  "Phibrows",
+  "DND",
+  "LPG",
+  "RevitaLash",
+  "The GelBottle",
+  "OPI",
+  "Mesoestetic",
+  "Yumi"
+];
+
+export const galleryImages = [
+  {
+    src: "/brand/ashanti-reception.jpeg",
+    alt: "Reception premium Ashanti Beauty",
+    label: "Accueil"
+  },
+  {
+    src: "/brand/ashanti-cabines.jpeg",
+    alt: "Cabines de soin Ashanti Beauty",
+    label: "Cabines"
+  },
+  {
+    src: "/brand/ashanti-lounge.jpeg",
+    alt: "Salon rose Ashanti Beauty",
+    label: "Lounge"
+  },
+  {
+    src: "/brand/ashanti-brows.jpeg",
+    alt: "Resultat brows Ashanti Beauty",
+    label: "Brows"
+  },
+  {
+    src: "/brand/ashanti-detail.jpeg",
+    alt: "Detail institut Ashanti Beauty",
+    label: "Details"
+  }
+];

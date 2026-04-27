@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site";
 const navItems = [
   { label: "Prestations", href: "#prestations" },
   { label: "L'institut", href: "#apropos" },
+  { label: "Partenaires", href: "#partenaires" },
   { label: "Avis", href: "#avis" },
   { label: "Reservation", href: "#reservation" },
   { label: "Contact", href: "#contact" }
@@ -10,24 +11,23 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-[rgba(253,249,247,0.82)] backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[rgba(14,11,13,0.34)] text-white backdrop-blur-xl">
       <div className="container-shell">
         <div className="flex min-h-20 items-center justify-between gap-4">
-          <a href="#accueil" className="min-w-0">
-            <p className="font-display text-[1.85rem] leading-none text-ink">
-              Ashanti Beauty
-            </p>
-            <p className="mt-1 text-[10px] uppercase tracking-[0.36em] text-ink/[0.45]">
-              Institut de beaute a Balma
-            </p>
+          <a href="#accueil" className="min-w-0" aria-label="Ashanti Beauty - Accueil">
+            <img
+              src={siteConfig.logoWhite}
+              alt="Ashanti Beauty"
+              className="h-10 w-auto max-w-[170px] object-contain"
+            />
           </a>
 
-          <nav className="hidden items-center gap-8 xl:flex">
+          <nav className="hidden items-center gap-7 xl:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-ink/[0.66] transition hover:text-ink"
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:text-white"
               >
                 {item.label}
               </a>
@@ -36,7 +36,7 @@ export function SiteHeader() {
 
           <a
             href={siteConfig.bookingHref}
-            className="rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-transparent hover:text-ink"
+            className="rounded-full border border-white/30 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:bg-transparent hover:text-white"
           >
             Reserver
           </a>

@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #fbf7f4;
+  --background: #fff8fb;
   --foreground: #171214;
+  --ashanti-pink: #f0a9d2;
+  --ashanti-soft: #fde8f3;
+  --ashanti-ink: #151113;
 }
 
 @keyframes slowPan {
@@ -31,15 +34,25 @@
   }
 }
 
+@keyframes partnerMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(233, 200, 208, 0.16), transparent 32%),
-    linear-gradient(180deg, #fdf9f7 0%, #ffffff 44%, #f8f1ee 100%);
+    radial-gradient(circle at 20% 8%, rgba(240, 169, 210, 0.28), transparent 28%),
+    linear-gradient(180deg, #fff8fb 0%, #ffffff 38%, #f8eef4 100%);
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
 .hero-loop-media {
@@ -49,6 +62,10 @@ body {
 
 .floating-soft {
   animation: subtleFloat 7s ease-in-out infinite;
+}
+
+.marquee-track {
+  animation: partnerMarquee 30s linear infinite;
 }
 
 * {
@@ -84,7 +101,7 @@ body {
 
 @layer components {
   .container-shell {
-    @apply mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-[94rem] px-5 sm:px-8 lg:px-10;
   }
 
   .section-space {
@@ -96,10 +113,20 @@ body {
   }
 
   .section-kicker {
-    @apply inline-flex rounded-full border border-black/10 bg-white/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.60];
+    @apply inline-flex rounded-full border border-black/10 bg-white/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/[0.58];
   }
 
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-black/[0.10] to-transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-loop-media,
+  .floating-soft,
+  .marquee-track,
+  .reveal-block {
+    animation: none !important;
+    transition: none !important;
   }
 }
