@@ -124,7 +124,8 @@ export default function HomePage() {
           >
             <source src={siteConfig.videoSrc} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,9,11,0.86)_0%,rgba(12,9,11,0.54)_38%,rgba(12,9,11,0.12)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,9,11,0.92)_0%,rgba(12,9,11,0.68)_42%,rgba(12,9,11,0.22)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_58%,rgba(0,0,0,0.38),transparent_46%)]" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fff8fb] to-transparent" />
 
           <div className="container-shell relative flex min-h-screen items-end pb-14 pt-32 sm:pb-20">
@@ -138,9 +139,9 @@ export default function HomePage() {
                 Institut de beaute premium a Balma
               </p>
               <h1 className="mt-6 max-w-4xl font-display text-6xl leading-[0.84] text-white sm:text-8xl lg:text-[8.5rem]">
-                Beauty with a soft luxury ritual.
+                Une parenthese beaute, douce et luxueuse.
               </h1>
-              <p className="mt-7 max-w-2xl text-base leading-8 text-white/78 sm:text-xl">
+              <p className="mt-7 max-w-2xl text-base font-medium leading-8 text-white/92 drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)] sm:text-xl">
                 Un univers feminin, epure et signature pour sublimer le regard, les ongles, la peau et le bien-etre
                 avec precision.
               </p>
