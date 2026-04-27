@@ -18,7 +18,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-manrope)"],
-        display: ["var(--font-cormorant)"]
+        display: ["var(--font-playfair)"]
       },
       boxShadow: {
         soft: "0 20px 50px rgba(36, 31, 35, 0.08)",

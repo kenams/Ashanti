@@ -133,12 +133,12 @@ export default function HomePage() {
               <img
                 src={siteConfig.logoWhite}
                 alt="Ashanti Beauty"
-                className="mb-8 h-auto w-[220px] object-contain sm:w-[320px]"
+                className="mb-9 h-auto w-[290px] object-contain drop-shadow-[0_8px_36px_rgba(255,255,255,0.28)] sm:w-[430px]"
               />
               <p className="text-xs font-semibold uppercase tracking-[0.42em] text-white/70">
                 Institut de beaute premium a Balma
               </p>
-              <h1 className="mt-6 max-w-4xl font-display text-6xl leading-[0.84] text-white sm:text-8xl lg:text-[8.5rem]">
+              <h1 className="mt-6 max-w-4xl font-display text-6xl font-medium leading-[0.88] text-white drop-shadow-[0_10px_38px_rgba(0,0,0,0.36)] sm:text-8xl lg:text-[8.2rem]">
                 Une parenthese beaute, douce et luxueuse.
               </h1>
               <p className="mt-7 max-w-2xl rounded-[28px] border border-white/14 bg-black/42 px-5 py-4 text-base font-semibold leading-8 text-white shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-md sm:px-6 sm:text-xl">

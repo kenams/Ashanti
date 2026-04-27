@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-cormorant",
+  variable: "--font-playfair",
   weight: ["400", "500", "600", "700"]
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${manrope.variable}`}>
+    <html lang="fr" className={`${playfair.variable} ${manrope.variable}`}>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

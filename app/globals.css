@@ -91,7 +91,7 @@ body {
   h2,
   h3,
   h4 {
-    @apply font-display tracking-[-0.03em] text-ink;
+    @apply font-display tracking-[-0.015em] text-ink;
   }
 
   p {
