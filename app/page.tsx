@@ -141,7 +141,7 @@ export default function HomePage() {
               <h1 className="mt-6 max-w-4xl font-display text-6xl leading-[0.84] text-white sm:text-8xl lg:text-[8.5rem]">
                 Une parenthese beaute, douce et luxueuse.
               </h1>
-              <p className="mt-7 max-w-2xl text-base font-medium leading-8 text-white/92 drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)] sm:text-xl">
+              <p className="mt-7 max-w-2xl rounded-[28px] border border-white/14 bg-black/42 px-5 py-4 text-base font-semibold leading-8 text-white shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-md sm:px-6 sm:text-xl">
                 Un univers feminin, epure et signature pour sublimer le regard, les ongles, la peau et le bien-etre
                 avec precision.
               </p>
