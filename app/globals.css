@@ -100,6 +100,36 @@ body {
   animation: heroTitleDriftReverse 10s ease-in-out infinite alternate;
 }
 
+.kah-watermark-pattern {
+  background-image: repeating-linear-gradient(
+    -24deg,
+    transparent 0,
+    transparent 126px,
+    rgba(255, 255, 255, 0.72) 126px,
+    rgba(255, 255, 255, 0.72) 128px,
+    transparent 128px,
+    transparent 250px
+  );
+  position: relative;
+}
+
+.kah-watermark-pattern::before {
+  content: "KAH-Digital  KAH-Digital  KAH-Digital  KAH-Digital";
+  position: absolute;
+  inset: -20%;
+  display: grid;
+  place-content: center;
+  color: rgba(255, 255, 255, 0.78);
+  font: 700 24px/1 var(--font-manrope);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-align: center;
+  transform: rotate(-24deg);
+  white-space: pre-wrap;
+  word-spacing: 5rem;
+  text-shadow: 0 0 1px rgba(36, 31, 35, 0.32);
+}
+
 * {
   border-color: rgba(23, 18, 20, 0.08);
 }

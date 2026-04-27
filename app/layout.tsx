@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Manrope } from "next/font/google";
 import "./globals.css";
+import { KahWatermark } from "@/components/kah-watermark";
 import { siteConfig } from "@/lib/site";
 
 const bodoni = Bodoni_Moda({
@@ -33,6 +34,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "fr_FR",
     type: "website"
+  },
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+    nosnippet: true,
+    noimageindex: true
   }
 };
 
@@ -43,7 +51,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${bodoni.variable} ${manrope.variable}`}>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <KahWatermark />
+      </body>
     </html>
   );
 }
