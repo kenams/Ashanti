@@ -72,11 +72,19 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 20% 8%, rgba(240, 169, 210, 0.28), transparent 28%),
-    linear-gradient(180deg, #fff8fb 0%, #ffffff 38%, #f8eef4 100%);
+  background: #fff8fb;
   color: var(--foreground);
   overflow-x: hidden;
+}
+
+.hero-video-media {
+  object-position: 55% 50%;
+}
+
+@media (min-width: 1024px) {
+  .hero-video-media {
+    object-position: 50% 42%;
+  }
 }
 
 .hero-loop-media {
