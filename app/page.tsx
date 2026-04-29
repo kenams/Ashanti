@@ -83,27 +83,28 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="accueil">
-        <section className="relative min-h-[96svh] overflow-hidden bg-ink text-white">
+        <section className="relative min-h-[92svh] overflow-hidden bg-ink text-white">
           <HeroVideo />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,8,9,0.76)_0%,rgba(10,8,9,0.46)_46%,rgba(10,8,9,0.18)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#fff8fb] to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,8,9,0.82)_0%,rgba(10,8,9,0.58)_46%,rgba(10,8,9,0.30)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,8,9,0.18)_0%,transparent_38%,rgba(10,8,9,0.30)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#fff8fb] to-transparent" />
 
-          <div className="container-shell relative flex min-h-[96svh] items-end pb-14 pt-28 sm:pb-16 lg:pb-20">
-            <Reveal className="w-full max-w-4xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-white/72">
+          <div className="container-shell relative flex min-h-[92svh] items-end pb-14 pt-32 sm:pb-16 lg:pb-16">
+            <Reveal className="w-full max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.36)]">
                 Institut de beauté premium à Balma
               </p>
-              <h1 className="mt-6 max-w-4xl font-display text-6xl font-medium leading-[0.9] text-white sm:text-8xl lg:text-[8.75rem]">
+              <h1 className="mt-5 max-w-3xl font-display text-5xl font-medium leading-[0.92] text-white drop-shadow-[0_12px_38px_rgba(0,0,0,0.28)] sm:text-7xl lg:text-[6.9rem] xl:text-[7.4rem]">
                 Ashanti Beauty
               </h1>
-              <p className="mt-7 max-w-2xl text-lg font-medium leading-8 text-white/88 sm:text-xl">
+              <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:text-lg">
                 Pour votre première visite, bénéficiez de -20% sur votre prestation de bienvenue.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <BookingButton variant="light" />
                 <a
                   href="#histoire"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 bg-white/20 px-6 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/30"
                 >
                   Découvrir l'institut
                   <ArrowRight className="h-4 w-4" />
@@ -211,7 +212,7 @@ export default function HomePage() {
 
             <Reveal delay={120} className="mt-12 grid gap-px overflow-hidden rounded-lg border border-black/[0.06] bg-black/[0.06] sm:grid-cols-2 lg:grid-cols-3">
               {partners.map((partner) => (
-                <div key={partner} className="flex h-28 items-center justify-center bg-white px-6 text-center font-display text-3xl text-ink/72">
+                <div key={partner} className="flex h-28 items-center justify-center bg-white px-6 text-center font-display text-3xl text-ink/70">
                   {partner}
                 </div>
               ))}
@@ -251,7 +252,7 @@ export default function HomePage() {
                     className="object-cover transition duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/78">{image.label}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/80">{image.label}</p>
                   </div>
                 </Reveal>
               ))}
@@ -272,7 +273,7 @@ export default function HomePage() {
                 {reviewStats.map((stat) => (
                   <div key={stat.label} className="rounded-lg border border-black/[0.06] bg-white p-5 shadow-[0_10px_28px_rgba(23,18,20,0.05)]">
                     <p className="font-display text-4xl leading-none text-ink">{stat.value}</p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink/45">{stat.label}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink/50">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -288,7 +289,7 @@ export default function HomePage() {
                   </div>
                   <Quote className="h-6 w-6 text-ink/20" />
                   <p className="mt-5 text-base">"{review.quote}"</p>
-                  <p className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-ink/45">
+                  <p className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-ink/50">
                     {review.name}
                   </p>
                 </Reveal>
@@ -308,21 +309,21 @@ export default function HomePage() {
                 <a href={siteConfig.mapsHref} target="_blank" rel="noreferrer" className="flex items-start gap-4">
                   <MapPin className="mt-1 h-5 w-5 text-gold" />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink/45">Adresse</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink/50">Adresse</p>
                     <p className="mt-1 font-semibold text-ink">{siteConfig.address}</p>
                   </div>
                 </a>
                 <a href={siteConfig.phoneHref} className="flex items-start gap-4">
                   <Phone className="mt-1 h-5 w-5 text-gold" />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink/45">Téléphone</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink/50">Téléphone</p>
                     <p className="mt-1 font-semibold text-ink">{siteConfig.phoneDisplay}</p>
                   </div>
                 </a>
                 <div className="flex items-start gap-4">
                   <CheckCircle2 className="mt-1 h-5 w-5 text-gold" />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink/45">Horaires</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink/50">Horaires</p>
                     <div className="mt-1 space-y-1 text-sm text-ink/70">
                       {siteConfig.hours.map((slot) => (
                         <p key={slot.day}>{slot.day} : {slot.value}</p>

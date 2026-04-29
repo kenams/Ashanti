@@ -113,8 +113,8 @@ body {
     -24deg,
     transparent 0,
     transparent 126px,
-    rgba(255, 255, 255, 0.72) 126px,
-    rgba(255, 255, 255, 0.72) 128px,
+    rgba(255, 255, 255, 0.38) 126px,
+    rgba(255, 255, 255, 0.38) 128px,
     transparent 128px,
     transparent 250px
   );
@@ -127,7 +127,7 @@ body {
   inset: -20%;
   display: grid;
   place-content: center;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.52);
   font: 700 24px/1 var(--font-manrope);
   letter-spacing: 0.28em;
   text-transform: uppercase;

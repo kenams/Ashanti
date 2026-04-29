@@ -12,7 +12,7 @@ export function SiteFooter() {
               alt="Ashanti Beauty"
               className="h-auto w-[190px] object-contain"
             />
-            <div className="mt-8 flex flex-wrap gap-4 text-sm text-white/72">
+            <div className="mt-8 flex flex-wrap gap-4 text-sm text-white/70">
               <a href={siteConfig.phoneHref} className="inline-flex items-center gap-2 transition hover:text-white">
                 <Phone className="h-4 w-4" />
                 {siteConfig.phoneDisplay}
@@ -41,7 +41,7 @@ export function SiteFooter() {
               </a>
             </div>
           </div>
-          <p className="text-xs uppercase tracking-[0.22em] text-white/45">
+          <p className="text-xs uppercase tracking-[0.22em] text-white/50">
             © Ashanti Beauty
           </p>
         </div>
